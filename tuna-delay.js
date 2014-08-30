@@ -225,16 +225,26 @@ define(['require', 'github:janesconference/KievII@0.6.0/kievII',
 
             this.audioSource.disconnect();
             this.delay.disconnect();
-            
+
             this.delay.input.disconnect();
             this.delay.activateNode.disconnect();
+            this.delay.delay.disconnect();
             this.delay.dry.disconnect();
             this.delay.wet.disconnect();
             this.delay.filter.disconnect();
             this.delay.feedbackNode.disconnect();
             this.delay.output.disconnect();
 
-            this.delay = undefined;
+            this.delay.input = null;
+            this.delay.activateNode = null;
+            this.delay.delay = null;
+            this.delay.dry = null;
+            this.delay.wet = null;
+            this.delay.filter = null;
+            this.delay.feedbackNode = null;
+            this.delay.output = null;
+
+            this.delay = null;
             this.ui = undefined;
             tuna = undefined;
 

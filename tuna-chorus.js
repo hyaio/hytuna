@@ -139,9 +139,42 @@ define(['require', 'github:janesconference/KievII@0.6.0/kievII',
             this.audioSource.disconnect(0);
             this.chorus.disconnect(0);
 
-            this.chorus = null;
-            this.ui = null;
-            tuna = null;
+            this.chorus.activateNode.disconnect(0);
+            this.chorus.activateNode = undefined;
+
+            this.chorus.attenuator.disconnect(0);
+            this.chorus.attenuator = undefined;
+
+            this.chorus.delayL.disconnect(0);
+            this.chorus.delayL = undefined;
+
+            this.chorus.delayR.disconnect(0);
+            this.chorus.delayR = undefined;
+
+            this.chorus.feedbackGainNodeLR.disconnect(0);
+            this.chorus.feedbackGainNodeLR = undefined;
+
+            this.chorus.feedbackGainNodeRL.disconnect(0);
+            this.chorus.feedbackGainNodeRL = undefined;
+
+            this.chorus.input.disconnect(0);
+            this.chorus.input = undefined;
+
+            this.chorus.merger.disconnect(0);
+            this.chorus.merger = undefined;
+
+            this.chorus.output.disconnect(0);
+            this.chorus.output = undefined;
+
+            this.chorus.splitter.disconnect(0);
+            this.chorus.splitter = undefined;
+
+            this.chorus.lfoR = undefined;
+            this.chorus.lfoL = undefined;
+
+            this.chorus = undefined;
+            this.ui = undefined;
+            tuna = undefined;
 
         }.bind(this);
 

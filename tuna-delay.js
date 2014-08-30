@@ -221,8 +221,18 @@ define(['require', 'github:janesconference/KievII@0.6.0/kievII',
 
         var destructor = function () {
 
-            this.audioSource.disconnect(0);
-            this.delay.disconnect(0);
+            console.log (this.delay);
+
+            this.audioSource.disconnect();
+            this.delay.disconnect();
+            
+            this.delay.input.disconnect();
+            this.delay.activateNode.disconnect();
+            this.delay.dry.disconnect();
+            this.delay.wet.disconnect();
+            this.delay.filter.disconnect();
+            this.delay.feedbackNode.disconnect();
+            this.delay.output.disconnect();
 
             this.delay = undefined;
             this.ui = undefined;

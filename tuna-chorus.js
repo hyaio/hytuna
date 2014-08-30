@@ -54,7 +54,7 @@ define(['require', 'github:janesconference/KievII@0.6.0/kievII',
         var initOffset = 22;
         var knobSpacing = 83;
         var knobTop = 20;
-        // TODO IS THERRE A 'depth' PARAMETER HERE?
+        // TODO IS THERE A 'depth' PARAMETER HERE?
         this.knobDescription = [ {id: 'rate', init: this.pluginState.rate, range: [0.01,8]},
                                 {id: 'feedback', init: this.pluginState.feedback, range: [0,1]},
                                 {id: 'delay', init: this.pluginState.delay, range: [0,1]}
@@ -134,6 +134,19 @@ define(['require', 'github:janesconference/KievII@0.6.0/kievII',
         }.bind(this),
         500);
 
+        var destructor = function () {
+
+            this.audioSource.disconnect(0);
+            this.chorus.disconnect(0);
+
+            this.chorus = null;
+            this.ui = null;
+            tuna = null;
+
+        }.bind(this);
+
+        args.hostInterface.setDestructor (destructor);
+
         var onMIDIMessage = function (message, when) {
             var now = this.context.currentTime;
             //console.log ("arrived MIDI message: type / when / now", message.type, when, now);
@@ -200,7 +213,6 @@ define(['require', 'github:janesconference/KievII@0.6.0/kievII',
         // Initialization made it so far: plugin is ready.
         args.hostInterface.setInstanceStatus ('ready');
     };
-    
     
     var initPlugin = function(initArgs) {
         var args = initArgs;

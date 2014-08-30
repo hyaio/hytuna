@@ -219,6 +219,19 @@ define(['require', 'github:janesconference/KievII@0.6.0/kievII',
 
         args.MIDIHandler.setMIDICallback (onMIDIMessage.bind (this));
 
+        var destructor = function () {
+
+            this.audioSource.disconnect(0);
+            this.delay.disconnect(0);
+
+            this.delay = undefined;
+            this.ui = undefined;
+            tuna = undefined;
+
+        }.bind(this);
+
+        args.hostInterface.setDestructor (destructor);
+
         // Initialization made it so far: plugin is ready.
         args.hostInterface.setInstanceStatus ('ready');
     };
